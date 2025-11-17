@@ -1,0 +1,54 @@
+# ----------------------------
+# Python
+# ----------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.db
+
+# We KEEP this specific .pkl file:
+!backend/model/iris_model.pkl
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+# ----------------------------
+# ML / MLflow
+# ----------------------------
+mlruns/
+*.log
+logs/
+
+# ----------------------------
+# Jupyter
+# ----------------------------
+.ipynb_checkpoints/
+
+# ----------------------------
+# VS Code
+# ----------------------------
+.vscode/
+*.code-workspace
+
+# ----------------------------
+# Cache
+# ----------------------------
+*.cache
+.cache/
+*.egg-info/
+
+# ----------------------------
+# MkDocs build
+# ----------------------------
+site/
+
+# ----------------------------
+# Docker
+# ----------------------------
+docker-compose.override.yml
+Dockerfile.*.backup

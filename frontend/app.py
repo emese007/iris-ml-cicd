@@ -10,7 +10,7 @@ logging.basicConfig(
 logger = logging.getLogger("iris-frontend")
 
 # URL du backend FastAPI
-BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8001")
+BACKEND_URL = os.getenv("BACKEND_URL") #, "http://localhost:8001")
 logger.info(f"Frontend started. Using backend URL: {BACKEND_URL}")
 
 st.set_page_config(

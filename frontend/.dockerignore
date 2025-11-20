@@ -1,0 +1,22 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Do NOT include local environments
+.venv/
+venv/
+env/
+
+# OS junk
+.DS_Store
+
+# Editor folders
+.vscode/
+.idea/
+
+# Jupyter notebooks (not needed for build)
+*.ipynb
+
+# Logs
+*.log

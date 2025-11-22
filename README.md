@@ -118,7 +118,7 @@ Frontend:
 
 ---
 
-## 🐳 Docker (Backend + Frontend)
+## Docker (Backend + Frontend)
 
 ### Build images
 
@@ -195,7 +195,7 @@ BACKEND_URL = https://iris-backend-app-fggsfndcfteqatbm.francecentral-01.azurewe
 Frontend URL:
 
 ```
-https://<your-frontend>.azurewebsites.net
+https://<your-frontend>.azurewebsites.net](https://iris-frontend-app-gtbdgddpgedqdybk.francecentral-01.azurewebsites.net
 ```
 
 ---

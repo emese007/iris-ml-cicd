@@ -1,1 +1,6 @@
-site_name: My Docs
+site_name: Iris MLOps Demo
+theme:
+  name: mkdocs
+
+nav:
+  - Project: index.md

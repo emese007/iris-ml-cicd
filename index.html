@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Iris MLOps Demo</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href="css/brands.min.css" rel="stylesheet">
+        <link href="css/solid.min.css" rel="stylesheet">
+        <link href="css/v4-font-face.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Iris MLOps Demo</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#iris-mlops-project-documentation" class="nav-link">Iris MLOps – Project Documentation</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#1-project-structure" class="nav-link">1. Project Structure</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-how-to-get-started" class="nav-link">2. How to Get Started</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-mlflow-model-training" class="nav-link">3. MLflow &amp; Model Training</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-run-the-backend-fastapi" class="nav-link">4. Run the Backend (FastAPI)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#5-run-the-frontend-streamlit" class="nav-link">5. Run the Frontend (Streamlit)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#6-run-everything-with-docker" class="nav-link">6. Run Everything with Docker</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#7-cicd-pipeline-github-actions" class="nav-link">7. CI/CD Pipeline (GitHub Actions)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#8-deployment-on-azure" class="nav-link">8. Deployment on Azure</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#9-summary" class="nav-link">9. Summary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="iris-mlops-project-documentation">Iris MLOps – Project Documentation</h1>
+<p>This project demonstrates a complete <strong>MLOps pipeline</strong> built around a simple Iris classification model.</p>
+<p>It includes:</p>
+<ul>
+<li>Model training and experiment tracking with <strong>MLflow</strong></li>
+<li>A <strong>FastAPI</strong> backend exposing a <code>/predict</code> endpoint</li>
+<li>A <strong>Streamlit</strong> frontend UI for predictions</li>
+<li><strong>Docker</strong> images for backend &amp; frontend</li>
+<li>A <strong>CI/CD pipeline</strong> with GitHub Actions</li>
+<li>Deployment to <strong>Azure App Service</strong></li>
+</ul>
+<hr />
+<h2 id="1-project-structure">1. Project Structure</h2>
+<p>Main folders:</p>
+<pre><code>backend/
+  app/               FastAPI application (API)
+  ml/                Model training script with MLflow
+  model/             Trained model file (iris_model.pkl)
+  tests/             Backend tests (pytest)
+  requirements.txt   Backend dependencies
+
+frontend/
+  app.py             Streamlit app
+  requirements.txt   Frontend dependencies
+
+docs/
+  index.md           This documentation (MkDocs)
+
+.github/workflows/
+  ci-cd.yml          CI/CD pipeline (tests, docs, Docker build &amp; push)
+</code></pre>
+<hr />
+<h2 id="2-how-to-get-started">2. How to Get Started</h2>
+<p>This section explains how to set up your environment and install all required dependencies.</p>
+<h3 id="21-prerequisites">2.1 Prerequisites</h3>
+<p>You need:</p>
+<ul>
+<li>Python <strong>3.11+</strong></li>
+<li>A virtual environment</li>
+<li>pip</li>
+<li>Docker (optional)</li>
+<li>Git</li>
+</ul>
+<p>Create and activate your environment:</p>
+<pre><code>cd iris-ml-cicd
+python -m venv .venv
+source .venv/bin/activate
+</code></pre>
+<p>Install dependencies:</p>
+<pre><code>pip install -r backend/requirements.txt
+pip install -r frontend/requirements.txt
+pip install mkdocs mkdocs-material
+</code></pre>
+<hr />
+<h2 id="3-mlflow-model-training">3. MLflow &amp; Model Training</h2>
+<h3 id="31-start-mlflow-ui">3.1 Start MLflow UI</h3>
+<pre><code>mlflow ui --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns
+</code></pre>
+<p>MLflow UI is available at:<br />
+http://127.0.0.1:5000</p>
+<h3 id="32-train-the-model">3.2 Train the Model</h3>
+<p>The training script:</p>
+<ul>
+<li>loads the Iris dataset  </li>
+<li>trains a LogisticRegression model  </li>
+<li>logs parameters &amp; metrics to MLflow  </li>
+<li>saves the trained model to <code>backend/model/iris_model.pkl</code></li>
+</ul>
+<p>Run:</p>
+<pre><code>python -m backend.ml.train
+</code></pre>
+<p>After training, the file <code>iris_model.pkl</code> should appear inside:</p>
+<pre><code>backend/model/
+</code></pre>
+<hr />
+<h2 id="4-run-the-backend-fastapi">4. Run the Backend (FastAPI)</h2>
+<p>The backend exposes:</p>
+<ul>
+<li><code>GET /</code> → health check  </li>
+<li><code>POST /predict</code> → returns the predicted Iris class  </li>
+</ul>
+<p>Run locally:</p>
+<pre><code>uvicorn backend.app.main:app --reload --port 8001
+</code></pre>
+<p>Backend available at:<br />
+http://127.0.0.1:8001<br />
+http://127.0.0.1:8001/docs</p>
+<hr />
+<h2 id="5-run-the-frontend-streamlit">5. Run the Frontend (Streamlit)</h2>
+<p>The frontend:</p>
+<ul>
+<li>lets you input the 4 Iris features  </li>
+<li>sends a request to <code>/predict</code>  </li>
+<li>displays the predicted class  </li>
+</ul>
+<p>Default backend URL:</p>
+<pre><code>BACKEND_URL = os.getenv(&quot;BACKEND_URL&quot;, &quot;http://localhost:8001&quot;)
+</code></pre>
+<p>Run:</p>
+<pre><code>cd frontend
+streamlit run app.py
+</code></pre>
+<p>Frontend available at:<br />
+http://127.0.0.1:8501</p>
+<hr />
+<h2 id="6-run-everything-with-docker">6. Run Everything with Docker</h2>
+<h3 id="61-build-docker-images">6.1 Build Docker images</h3>
+<pre><code>docker build -t mlops-demo-backend:local ./backend
+docker build -t mlops-demo-frontend:local ./frontend
+</code></pre>
+<h3 id="62-run-containers">6.2 Run containers</h3>
+<p><strong>Backend:</strong></p>
+<pre><code>docker run -p 8001:8001 mlops-demo-backend:local
+</code></pre>
+<p><strong>Frontend (with backend connection):</strong></p>
+<pre><code>docker run -p 8501:8501 \
+  -e BACKEND_URL=&quot;http://host.docker.internal:8001&quot; \
+  mlops-demo-frontend:local
+</code></pre>
+<hr />
+<h2 id="7-cicd-pipeline-github-actions">7. CI/CD Pipeline (GitHub Actions)</h2>
+<p>The CI/CD pipeline (<code>.github/workflows/ci-cd.yml</code>) runs on each push to <code>main</code>:</p>
+<ul>
+<li>installs backend dependencies  </li>
+<li>runs backend tests  </li>
+<li>builds and deploys documentation  </li>
+<li>builds Docker images (backend + frontend)  </li>
+<li>pushes images to Docker Hub  </li>
+</ul>
+<p>Secrets required:</p>
+<ul>
+<li><code>DOCKERHUB_USERNAME</code></li>
+<li><code>DOCKERHUB_TOKEN</code></li>
+</ul>
+<p>Configured in:</p>
+<blockquote>
+<p>GitHub → Settings → Secrets and Variables → Actions</p>
+</blockquote>
+<hr />
+<h2 id="8-deployment-on-azure">8. Deployment on Azure</h2>
+<h3 id="backend">Backend</h3>
+<ul>
+<li>Runs as a Docker App Service  </li>
+<li>Port: <strong>8001</strong>  </li>
+<li>Image:</li>
+</ul>
+<pre><code>DOCKERHUB_USER/mlops-demo-backend:latest
+</code></pre>
+<p>Accessible at:</p>
+<pre><code>https://iris-backend-app-fggsfndcfteqatbm.francecentral-01.azurewebsites.net
+https://iris-backend-app-fggsfndcfteqatbm.francecentral-01.azurewebsites.net/docs
+</code></pre>
+<h3 id="frontend">Frontend</h3>
+<ul>
+<li>Runs as a Docker App Service  </li>
+<li>Port: <strong>8501</strong>  </li>
+<li>Requires environment variable:</li>
+</ul>
+<pre><code>BACKEND_URL = https://iris-backend-app-fggsfndcfteqatbm.francecentral-01.azurewebsites.net
+</code></pre>
+<p>Accessible at:</p>
+<pre><code>https://iris-frontend-app-gtbdgddpgedqdybk.francecentral-01.azurewebsites.net
+</code></pre>
+<hr />
+<h2 id="9-summary">9. Summary</h2>
+<p>This project demonstrates a complete MLOps workflow:</p>
+<ul>
+<li>ML training and experiment tracking  </li>
+<li>FastAPI model serving  </li>
+<li>Streamlit user interface  </li>
+<li>Dockerization  </li>
+<li>CI/CD automation with GitHub Actions  </li>
+<li>Deployment to Azure App Service  </li>
+</ul>
+<hr /></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2025-11-22 20:35:54.552376+00:00
+-->

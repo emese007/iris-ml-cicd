@@ -200,7 +200,7 @@ https://<your-frontend>.azurewebsites.net
 
 ---
 
-## 📚 Documentation (MkDocs)
+## Documentation (MkDocs)
 
 Local preview:
 
@@ -212,12 +212,12 @@ mkdocs serve
 Deployed online via GitHub Pages at:
 
 ```
-https://<your-username>.github.io/iris-ml-cicd/
+https://emese007.github.io/iris-ml-cicd/
 ```
 
 ---
 
-## ✅ Summary
+## Summary
 
 This project demonstrates a complete modern MLOps workflow:
 

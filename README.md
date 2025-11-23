@@ -228,4 +228,4 @@ This project demonstrates a complete modern MLOps workflow:
 - automated CI/CD
 - deployment to Azure Cloud
 
-Perfect blueprint for real-world machine learning operations 🚀
+Perfect blueprint for real-world machine learning operations.
